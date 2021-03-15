@@ -13,6 +13,8 @@ def jogo_forca():
 
     while(not enforcou and not acertou):
         chutar = pedir_chute()
+
+        # Validando que apenas uma letra seja informada
         if(len(chutar) > 1):
             print('Por favor digite apenas uma letra')
 
@@ -39,10 +41,13 @@ def carrega_palavras():
      # Leitura do arquivo
     arquivo = open('frutas.txt', 'r', encoding='UTF-8')
     for linha in arquivo:
+        # Removendo espaços ou \n
         linha = linha.strip()
+        # Gravando na lista cada palavra
         palavras.append(linha)
     arquivo.close()
 
+    # Armazenando a quantidade de palavras
     numero = rd.randrange(0, len(palavras))
 
     palavra = palavras[numero].lower()
@@ -62,10 +67,13 @@ def imprime_titulo():
     print('*****************\n')
 
 def obter_letras_palavra(palavra):
+    # Aplicando List Comprehention para retornar espaço '_' de acordo com quantidade de letras
     return ['_' for letra in palavra]
 
 def pedir_chute():
+    # Pergunta da letra
     chute = input('Qual letra?\n').lower()
+    # Removendo espaços e \n
     chute = chute.strip()
     return chute
 
